@@ -11,7 +11,7 @@ def max3(a,b,c):
             return b
     elif(a<c):
         return c
-    else : return a
+    else: return a
 
 
 def div_by_three(x):
@@ -25,13 +25,13 @@ def power(x,y):
     for i in range(y-1):
         x*=z
     return x
-#--------------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------------
+
 
 def check_pnr(arr):
     # print(10-unit(summ(produkt(arr))) ,"funktioner")# print(arr[len(arr)-1] ,"svar")
     return ((10-unit(summ(produkt(arr))))%10 == arr[len(arr)-1])
     
-
 
 def summ(arr):
     tot=0
@@ -51,8 +51,6 @@ def produkt(arr):
         arr2.append(unit(x))
         arr2.append(ten(x))
     return arr2
-            
-
 
 
 def unit(x):
@@ -64,4 +62,6 @@ def ten(x):
         return (x//10)%10
     else: return 0
 
+
+# -------------------------------------------------------
 

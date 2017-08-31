@@ -1,24 +1,29 @@
-class Bord:
-    def __init__(self):
-        self.board = [], []
+print("start")
 
-    def place_piece(self,x,y,player):
-        if(self.is_free(x,y)):
-            self.board[x][y] = player
-            return True
-        else:
-            return False
+def new_board():
+    obj = {{},{}}
+    return obj
 
-    def is_free(self,x,y):
-        return self.board[x][y] is None
 
-    def reset_board(self):
-        self.board = [], []
 
-    def get_piece(self,x,y):
-        return self.board[x][y]
+def place_piece(bord,x,y,player):
+    if(is_free(bord,x,y)):
+        bord[x][y] = player
+        return True
+    else:
+        return False
 
-    #def nearest_piece(self):
+def is_free(bord,x,y):
+    return bord[x],[y] is None
+
+def reset_board(bord):
+    bord = [], []
+
+def get_piece(bord,x,y):
+    return bord[x][y]
+
+#def nearest_piece(self):
+
 
 
 

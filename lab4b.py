@@ -1,40 +1,39 @@
 #edvbe696
 
-print("s")
 
-def interpret(arg,info):
+def interpret(inputExpression,info):
     
     
-    rLoop = loop(False, arg)
-    #print(rLoop)
+    postNot = removeNot(False, inputExpression)
+    #print(postNot)
 
-    if isinstance(rLoop[1],str):
+    if isinstance(postNot[1],str):
         
-        return(returnArg(find(rLoop[1],info),rLoop[0]))
-    elif isinstance(rLoop[1][0],str) and len(rLoop[1]) == 1:
-        return(returnArg(find(rLoop[1][0],info),rLoop[0]))
+        return(returnArg(find(postNot[1],info),postNot[0]))
+    elif isinstance(postNot[1][0],str) and len(postNot[1]) == 1:
+        return(returnArg(find(postNot[1][0],info),postNot[0]))
 
     else:
         
-        arg1 = loop(False,rLoop[1][0])
-        arg2 = loop(False,rLoop[1][2])
+        arg1 = removeNot(False,postNot[1][0])
+        arg2 = removeNot(False,postNot[1][2])
         
 
-        #om ett vÅ‰rde  bestÅÂr av ett argument
+        #om ett vÅ‰rde  bestÅÂr av ett argument utryck
         if isinstance(arg1[1],list):
             arg1[1] = interpret(arg1[1],info)
         if isinstance(arg2[1],list):
             arg2[1] = interpret(arg2[1],info)
         
-        if checkArg(rLoop[1][1]):
+        if checkArg(postNot[1][1]):
             if returnArg(find(arg1[1],info),arg1[0]) == returnArg(find(arg2[1],info),arg2[0]) == "true":
-                return returnArg("true",rLoop[0])
+                return returnArg("true",postNot[0])
             else:
-                return returnArg("false",rLoop[0])
+                return returnArg("false",postNot[0])
         elif returnArg(find(arg1[1],info),arg1[0]) == "true" or returnArg(find(arg2[1],info),arg2[0]) == "true":
-                return returnArg("true",rLoop[0])
+                return returnArg("true",postNot[0])
         else:
-            return returnArg("false",rLoop[0])
+            return returnArg("false",postNot[0])
         
 
 
@@ -49,11 +48,11 @@ def returnArg(svar,invert):
         return svar
 
 
-def loop(invert,arg):
+def removeNot(invert,arg):
     if len(arg) == 2 and isinstance(arg,list):
         invert = not invert
         arg = arg[1]
-        return loop(invert,arg)
+        return removeNot(invert,arg)
 
     else: 
 
@@ -74,9 +73,9 @@ def find(a,b):
     if a == "false":
         return "false"
     for i in b.keys():
-        print(i,"<i  a>",a)
+        #print(i,"<i  a>",a)
         if i == a:
-            print("jaaa")
+            #print("jaaa")
             return b[i]
 
         

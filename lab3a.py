@@ -20,7 +20,6 @@ def new_board():
     
     return {}
 
-
 """
 -------------------------------------------------
 Här bär vi endast ha en deklarerad for-loop för att korta ned koden.
@@ -37,20 +36,17 @@ kunna hjälpa till att göra den här koden mycket mer läsbar.
 
 
 def count(bord,typeP,n,player):
+    tot = 0
     if typeP == "column": #x
-        tot = 0
-        for key in bord:
-            if (n == key[0]):
-                if (get_piece(bord,n,key[1])==player):
-                    tot = tot+1
-        return tot
+        typePInt = 1
     elif typeP == "row":
-        tot =0
-        for key in bord:
-            if (n == key[1]):
-                if (get_piece(bord,key[0],n)==player):
-                    tot = tot+1
-        return tot
+
+    for key in bord:
+        if (n == key[0]):
+            if (get_piece(bord,n,key[typePInt])==player):
+                tot = tot+1
+    return tot
+       
 
 
 

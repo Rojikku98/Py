@@ -40,7 +40,7 @@ def count(bord,typeP,n,player):
     if typeP == "column": #x
         typePInt = 1
     elif typeP == "row":
-
+        typePInt = 0
     for key in bord:
         if (n == key[0]):
             if (get_piece(bord,n,key[typePInt])==player):

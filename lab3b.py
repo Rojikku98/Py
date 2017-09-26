@@ -24,17 +24,13 @@ Kanske hade man kunnat returnera start * loop(start+1, end) och haft return 1 i 
 def choose(k,n):    
     tot = 1
     if(k-n > n):
-        return (loop(k,tot,(k-n))//loop(n,tot))
+        return (loop(k,(k-n))//loop(n))
     else:
-        return (loop(k,tot,n)//loop((k-n),tot))
-
-
-def loop(start,tot,end=0):
-    if start>(end):
-        tot*=start
-        start-=1
-        return loop(start,tot,end)
-    else: 
-        return tot
+        return (loop(k,n)//loop((k-n)))
         
     
+def loop(start, end = 0):
+    if start>end:
+        return start * loop(start-1,end)
+    else:
+        return 1
